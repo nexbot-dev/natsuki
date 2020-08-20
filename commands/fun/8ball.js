@@ -1,4 +1,5 @@
 const { Command } = require('aen-bot');
+const { EightBallAnswer } = require('../../index');
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -24,8 +25,20 @@ module.exports = class extends Command {
 
 		if (!question.match(/\?$/)) return msg.channel.send('Please use question mark (?) at the end.');
 
-		let random = num => Math.round(Math.random() * num), answer, reply;
+		let answer, reply;
 
-		if (question.match())
+		if (question.match(/^what/i)) answer = EightBallAnswer.WHAT;
+		else if (question.match(/^who/i)) answer = EightBallAnswer.WHO;
+		else if (question.match(/^where/i)) answer = EightBallAnswer.WHERE;
+		else if (question.match(/^when/i)) answer = EightBallAnswer.WHEN;
+		else if (question.match(/^why/i)) answer = EightBallAnswer.WHY;
+		else if (question.match(/^how much/i)) answer = EightBallAnswer.HOW_MUCH;
+		else if (question.match(/^how many/i)) answer = EightBallAnswer.HOW_MANY;
+		else if (question.match(/^how/i)) answer = EightBallAnswer.HOW;
+		else answer = EightBallAnswer.DEFAULT;
+
+		let reply = answer[0];
+
+		msg.channel.send(question+'\nAnswer: '+reply);
 	}
 }

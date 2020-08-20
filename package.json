@@ -1,6 +1,6 @@
 {
 	"name": "natsuki",
-	"version": "3.0.0",
+	"version": "2.6.0",
 	"description": "A multifunctional discord bot by Aen Jojo",
 	"main": "main.js",
 	"scripts": {
