@@ -1,0 +1,30 @@
+{
+	"name": "natsuki",
+	"version": "3.0.0",
+	"description": "A multifunctional discord bot by Aen Jojo",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node main.js"
+	},
+	"engines": {
+		"node": "12.x"
+	},
+	"repository": {
+		"url": "https://github.com/AmethystAnimion/Natsuki"
+	},
+	"author": "Aen Jojo",
+	"license": "AGPL-3.0",
+	"keywords": [
+		"node",
+		"aen-bot",
+		"aenjojo",
+		"natsuki"
+	],
+	"dependencies": {
+		"discord.js": "^12.2.0",
+		"aen-bot": "file:../aen-bot",
+		"dotenv": "^8.2.0",
+		"node-fetch": "^2.6.0"
+	}
+}
