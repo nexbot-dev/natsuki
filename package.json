@@ -1,6 +1,6 @@
 {
 	"name": "natsuki",
-	"version": "2.6.0",
+	"version": "2.6.1",
 	"description": "A multifunctional discord bot by Aen Jojo",
 	"main": "main.js",
 	"scripts": {
@@ -11,7 +11,7 @@
 		"node": "12.x"
 	},
 	"repository": {
-		"url": "https://github.com/AmethystAnimion/Natsuki"
+		"url": "https://github.com/AenmaAnimion/Natsuki"
 	},
 	"author": "Aen Jojo",
 	"license": "AGPL-3.0",
@@ -23,8 +23,11 @@
 	],
 	"dependencies": {
 		"discord.js": "^12.2.0",
-		"aen-bot": "file:../aen-bot",
+		"aen-bot": "git+https://github.com/aenmaanimion/aen-bot.git",
 		"dotenv": "^8.2.0",
 		"node-fetch": "^2.6.0"
+	},
+	"devDependencies": {
+		"aen-bot-dev": "file:../aen-bot-dev"
 	}
 }

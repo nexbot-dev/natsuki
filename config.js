@@ -16,7 +16,8 @@ module.exports = {
 		synonym: 'https://api.datamuse.com/words',
 		urban: 'http://api.urbandictionary.com/v0/define',
 		weeb: {
-
+			request: 'https://rra.ram.moe/i/r',
+			cdn: 'https://cdn.ram.moe'
 		}
 	}
 }

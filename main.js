@@ -10,9 +10,9 @@ const client = new AenBot({
 	config: config
 });
 
-client.registerDefaultEvents();
-client.registerDefaultCommands();
-client.registerCommands([
+client.registry
+.registerDefault()
+.registerCommands([
 	'animal'
 ]);
 

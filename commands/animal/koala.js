@@ -1,5 +1,4 @@
 const { Command } = require('aen-bot');
-const { MessageEmbed } = require('discord.js');
 const { Animal } = require('../../index');
 
 module.exports = class extends Command {
@@ -16,24 +15,25 @@ module.exports = class extends Command {
 				example: 'fact'
 			},
 			cooldown: {
-				usage: 1,
-				time: 8000
+				users: new Map(),
+				usage: 2,
+				time: 10000
 			}
 		})
 	}
 	
 	async run(msg, args) {
-		const animal = await new Animal('Koala');
+		let animal = await new Animal('Koala');
 
-		let [type] = args;
+		let result, [type] = args;
 
 		if (type === 'fact')
-			animal = animal.makeEmbed(this.client, MessageEmbed, 'fact');
+			result = await animal.makeEmbed('fact');
 		else if (type === 'image')
-			animal = animal.makeEmbed(this.client, MessageEmbed, 'image');
+			result = await animal.makeEmbed('image');
 		else
-			animal = animal.makeEmbed(this.client, MessageEmbed);
+			result = await animal.makeEmbed();
 
-		msg.channel.send({embed: animal});
+		msg.channel.send({embed: result});
 	}
 }

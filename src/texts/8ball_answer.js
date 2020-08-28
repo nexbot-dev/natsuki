@@ -1,15 +1,19 @@
 let random = num => Math.round(Math.random() * num);
 
+/**
+ * Fill the answer later with affirmative answer, netral answer, and negative answer
+ */
+
 const Answer = {
-	'WHAT': [(!![]+[])],
-	'WHO': [(!![]+[])],
-	'WHERE': [(!![]+[])],
-	'WHEN': [(!![]+[])],
-	'WHY': [(!![]+[])],
-	'HOW': [(!![]+[])],
-	'HOW_MUCH': [(!![]+[])+random],
-	'HOW_MANY': [!![]+[]+random],
-	'DEFAULT': [(!![]+[])]
+	'WHAT': [''],
+	'WHO': ['A president', 'Cannot answer now', 'A celebrity', 'A spammer', 'A genie', 'An alien', 'A human that is not exist anymore', 'A fortune teller'],
+	'WHERE': ['In my hometown', 'Nowhere', 'Better not to tell you now'],
+	'WHEN': [''],
+	'WHY': [''],
+	'HOW': [''],
+	'HOW_MUCH': ['A lot', 'A little', ''],
+	'HOW_MANY': ['A lot', 'A few', ''],
+	'DEFAULT': ['It is certain', 'Yes, definitely', 'You may rely on it', 'My reply is no', 'Most likely']
 };
 
 module.exports = Answer;

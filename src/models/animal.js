@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
+const { MessageEmbed } = require('discord.js');
 const config = require('../../config');
 
-module.exports = class Animal {
+class Animal {
 	constructor(animal) {
 		this.animal = animal;
 
@@ -18,13 +19,13 @@ module.exports = class Animal {
 		return fetched;
 	}
 
-	makeEmbed(client, embed, type = '') {
-		let data = this.getData();
+	async makeEmbed(type = '') {
+		let data = await this.getData();
 
-		let result = new embed()
+		let result = new MessageEmbed()
 			.setTitle(this.animal)
-			.setColor(client.conf.color)
-			.setFooter(client.conf.version)
+			.setColor(config.color)
+			.setFooter(config.version)
 			.setTimestamp();
 
 		if (type === 'fact') {
@@ -42,3 +43,5 @@ module.exports = class Animal {
 		return result.toJSON();
 	}
 }
+
+module.exports = Animal;

@@ -1,4 +1,5 @@
 const { Command } = require('aen-bot');
+const { stripIndents } = require('common-tags');
 const { EightBallAnswer } = require('../../index');
 
 module.exports = class extends Command {
@@ -14,8 +15,9 @@ module.exports = class extends Command {
 				example: 'What are you talking about?'
 			},
 			cooldown: {
-				usage: 1,
-				time: 8000
+				users: new Map(),
+				usage: 2,
+				time: 14000
 			}
 		})
 	}
@@ -25,7 +27,7 @@ module.exports = class extends Command {
 
 		if (!question.match(/\?$/)) return msg.channel.send('Please use question mark (?) at the end.');
 
-		let answer, reply;
+		let answer, reply, choice;
 
 		if (question.match(/^what/i)) answer = EightBallAnswer.WHAT;
 		else if (question.match(/^who/i)) answer = EightBallAnswer.WHO;
@@ -37,8 +39,13 @@ module.exports = class extends Command {
 		else if (question.match(/^how/i)) answer = EightBallAnswer.HOW;
 		else answer = EightBallAnswer.DEFAULT;
 
-		let reply = answer[0];
+		choice = Math.floor(Math.random() * answer.length);
+		reply = answer[choice];
 
-		msg.channel.send(question+'\nAnswer: '+reply);
+		msg.channel.send(stripIndents`
+			🎱 **Question by:** ${msg.author.username}
+			${question}
+			\`\`\`${reply}\`\`\`
+		`);
 	}
 }
