@@ -1,7 +1,4 @@
 module.exports = {
-	// mandatory modules
-	AenBot: require('aen-bot-dev'),
-
 	// src/assets
 
 	// src/models

@@ -22,9 +22,10 @@ module.exports = class extends Command {
 	}
 	
 	async run(msg, args) {
-		let [user] = args;
-		let mention = user.match(/\<\@\d{18}\>/igm) ? user : msg.author;
-		let text = `Here is a hug for you, ${mention}`;
+		let mention = args[0] || msg.author;
+		let user = this.client.users.cache.get(`${mention}`.match(/\d{18}/)[0]);
+		
+		let text = `Here is a hug for you, ${user.username}`;
 
 		let embed = await new Weeb('nom').makeEmbed();
 

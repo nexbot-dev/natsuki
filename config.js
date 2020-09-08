@@ -1,9 +1,28 @@
 module.exports = {
 	owner: '445789748083163139',
-	version: 'v1.0.0',
+	version: 'v2.6.2',
 	color: '#ee1280',
 	prefix: ['n!', 'natsuki,'],
 	logo: '',
+	setup: {
+		invite: {
+			server: '',
+			bot: ''
+		},
+		donate: {
+			patreon: ''
+		},
+		vote: [
+			// [vote_sitename, vote_link]
+			['topgg', ''],
+			['botfordiscord', ''],
+			['discordbotlist', '']
+		],
+		version: {
+			nodejs: '',
+			discordjs: ''
+		}
+	},
 	api: {
 		aen: {
 			roast: 'https://aenma-api.glitch.me/text/roast'

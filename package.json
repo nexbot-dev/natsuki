@@ -1,6 +1,6 @@
 {
 	"name": "natsuki",
-	"version": "2.6.1",
+	"version": "2.6.2",
 	"description": "A multifunctional discord bot by Aen Jojo",
 	"main": "main.js",
 	"scripts": {
@@ -22,8 +22,9 @@
 		"natsuki"
 	],
 	"dependencies": {
-		"discord.js": "^12.2.0",
 		"aen-bot": "git+https://github.com/aenmaanimion/aen-bot.git",
+		"canvas": "^2.6.1",
+		"discord.js": "^12.3.1",
 		"dotenv": "^8.2.0",
 		"node-fetch": "^2.6.0"
 	},

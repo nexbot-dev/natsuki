@@ -1,4 +1,4 @@
-const { AenBot } = require('aen-bot');
+const { AenBot } = require('aen-bot-dev');
 const config = require('./config');
 
 require('dotenv').config();
@@ -13,7 +13,8 @@ const client = new AenBot({
 client.registry
 .registerDefault()
 .registerCommands([
-	'animal'
+	'animal',
+	'anime'
 ]);
 
 client.login(process.env.TOKEN);
