@@ -1,4 +1,5 @@
 const { Command } = require('aen-bot');
+const { GetUser } = require('aen-bot-dev');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Command {
@@ -18,13 +19,16 @@ module.exports = class extends Command {
 	}
 	
 	async run(msg, args) {
-		let mention = args[0] || msg.author;
-		let user = this.client.users.cache.get(`${mention}`.match(/\d{18}/)[0]);
+		let mention = args.join(' ') || msg.author.id;
 		
+		return new GetUser(this.client, msg, mention, this.cmdCallback).validate();
+	}
+
+	cmdCallback(msg, result) {
 		let embed = new MessageEmbed()
-			.setTitle(`${user.username}'s Avatar`)
+			.setTitle(`${result.username}'s Avatar`)
 			.setColor(this.client.conf.color)
-			.setImage(user.displayAvatarURL({size: 4096, dynamic: true, format: 'png'}))
+			.setImage(result.displayAvatarURL({size: 4096, dynamic: true, format: 'png'}))
 			.setTimestamp()
 			.setFooter(this.client.conf.version)
 

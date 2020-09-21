@@ -14,7 +14,8 @@ client.registry
 .registerDefault()
 .registerCommands([
 	'animal',
-	'anime'
+	'anime',
+	'dev'
 ]);
 
 client.login(process.env.TOKEN);
