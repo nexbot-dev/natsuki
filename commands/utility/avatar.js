@@ -1,5 +1,4 @@
-const { Command } = require('aen-bot');
-const { GetUser } = require('aen-bot-dev');
+const { Command, GetUser } = require('aen-bot');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class extends Command {

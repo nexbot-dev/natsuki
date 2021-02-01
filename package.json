@@ -22,11 +22,11 @@
 		"natsuki"
 	],
 	"dependencies": {
-		"aen-bot": "git+https://github.com/aenmaanimion/aen-bot.git",
+		"aen-bot": "git+https://github.com/aenjojo/aen-bot.git",
 		"canvas": "^2.6.1",
 		"discord.js": "^12.3.1",
 		"dotenv": "^8.2.0",
-		"node-fetch": "^2.6.0"
+		"node-fetch": "^2.6.1"
 	},
 	"devDependencies": {
 		"aen-bot-dev": "file:../aen-bot-dev"
