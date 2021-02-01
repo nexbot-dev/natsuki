@@ -27,8 +27,5 @@
 		"discord.js": "^12.3.1",
 		"dotenv": "^8.2.0",
 		"node-fetch": "^2.6.1"
-	},
-	"devDependencies": {
-		"aen-bot-dev": "file:../aen-bot-dev"
 	}
 }
