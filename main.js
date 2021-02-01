@@ -1,4 +1,4 @@
-const { AenBot } = require('aen-bot');
+const { AenBot } = require('aen-bot-dev');
 const config = require('./config');
 
 require('dotenv').config();
