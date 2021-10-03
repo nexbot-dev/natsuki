@@ -4,11 +4,11 @@ const { Weeb } = require('../../index');
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'owo',
+			name: 'lewd',
 			group: 'fun',
 			clientPermissions: ['EMBED_LINKS'],
 			help: {
-				description: 'Sends random OwO picture for those people who like owo faces.'
+				description: 'Sends random lewd picture for you.'
 			},
 			cooldown: {
 				users: new Map(),
@@ -19,10 +19,10 @@ module.exports = class extends Command {
 	}
 	
 	async run(msg) {	
-		let text = `OwO, owo owo OWO OWO owo!`;
+		let text = `Lewd.`;
 
 		let embed = await new Weeb({
-			type: 'owo',
+			type: 'lewd',
 			nsfw: false
 		}).makeEmbed();
 

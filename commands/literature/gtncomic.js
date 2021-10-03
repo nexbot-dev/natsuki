@@ -4,11 +4,13 @@ const { Weeb } = require('../../index');
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'owo',
-			group: 'fun',
+			name: 'gtncomic',
+            aliases: ['gtn'],
+			group: 'literature',
+			nsfw: true,
 			clientPermissions: ['EMBED_LINKS'],
 			help: {
-				description: 'Sends random OwO picture for those people who like owo faces.'
+				description: 'Sends random comic.'
 			},
 			cooldown: {
 				users: new Map(),
@@ -19,11 +21,11 @@ module.exports = class extends Command {
 	}
 	
 	async run(msg) {	
-		let text = `OwO, owo owo OWO OWO owo!`;
+		let text = `NSFW comic by GreenTeaNeko.`;
 
 		let embed = await new Weeb({
-			type: 'owo',
-			nsfw: false
+			type: 'nsfw-gtn',
+			nsfw: true
 		}).makeEmbed();
 
 		return msg.channel.send(text, {embed: embed});
