@@ -17,7 +17,7 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 14000
+				time: 5000
 			}
 		})
 	}
@@ -27,25 +27,30 @@ module.exports = class extends Command {
 
 		if (!question.match(/\?$/)) return msg.channel.send('Please use question mark (?) at the end.');
 
-		let answer, reply, choice;
+		let random = num => Math.floor(Math.random() * num);
 
-		if (question.match(/^what/i)) answer = EightBallAnswer.WHAT;
-		else if (question.match(/^who/i)) answer = EightBallAnswer.WHO;
-		else if (question.match(/^where/i)) answer = EightBallAnswer.WHERE;
-		else if (question.match(/^when/i)) answer = EightBallAnswer.WHEN;
-		else if (question.match(/^why/i)) answer = EightBallAnswer.WHY;
-		else if (question.match(/^how much/i)) answer = EightBallAnswer.HOW_MUCH;
-		else if (question.match(/^how many/i)) answer = EightBallAnswer.HOW_MANY;
-		else if (question.match(/^how/i)) answer = EightBallAnswer.HOW;
-		else answer = EightBallAnswer.DEFAULT;
-
-		choice = Math.floor(Math.random() * answer.length);
-		reply = answer[choice];
+		let answer = await this.check(question);
+		let choice = random(answer.length);
+		let reply = answer[choice]
+			.replace(/\[random1\]/g, random(10))
+			.replace(/\[random2\]/g, random(100));
 
 		msg.channel.send(stripIndents`
 			🎱 **Question by:** ${msg.author.username}
 			${question}
 			\`\`\`${reply}\`\`\`
 		`);
+	}
+
+	async check(question) {
+		if (question.match(/^what/i)) return EightBallAnswer.WHAT;
+		else if (question.match(/^who/i)) return EightBallAnswer.WHO;
+		else if (question.match(/^where/i)) return EightBallAnswer.WHERE;
+		else if (question.match(/^when/i)) return EightBallAnswer.WHEN;
+		else if (question.match(/^why/i)) return EightBallAnswer.WHY;
+		else if (question.match(/^how much/i)) return EightBallAnswer.HOW_MUCH;
+		else if (question.match(/^how many/i)) return EightBallAnswer.HOW_MANY;
+		else if (question.match(/^how/i)) return EightBallAnswer.HOW;
+		else return EightBallAnswer.DEFAULT;
 	}
 }

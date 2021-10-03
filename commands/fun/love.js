@@ -17,7 +17,7 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 16000
+				time: 5000
 			}
 		})
 	}
@@ -25,6 +25,10 @@ module.exports = class extends Command {
 	async run(msg, args) {
 		let user = args.join(' ');
 		
+		if (!user) {
+			return msg.channel.send('Please type two names to match.');
+		}
+
 		if (!user.includes(',')) {
 			return msg.channel.send('Use a comma to separate each user to match.');
 		}

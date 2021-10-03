@@ -4,11 +4,11 @@ const { Weeb } = require('../../index');
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
-			name: 'pout',
-			group: 'anime',
+			name: 'slap',
+			group: 'weeb',
 			clientPermissions: ['EMBED_LINKS'],
 			help: {
-				description: 'Pouts to somebody with weeb picture',
+				description: 'Slaps somebody with weeb picture',
 				arguments: ['[mention]'],
 				explains: ['The mention of somebody, if ignored, enter invalid mention, or id will return to mentions the command user.'],
 				example: '@Natsuki#0492'
@@ -16,7 +16,7 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 8000
+				time: 5000
 			}
 		})
 	}
@@ -27,7 +27,10 @@ module.exports = class extends Command {
 		
 		let text = `Here is a hug for you, ${user.username}`;
 
-		let embed = await new Weeb('pout').makeEmbed();
+		let embed = await new Weeb({
+			type: 'slap',
+			nsfw: false
+		}).makeEmbed();
 
 		return msg.channel.send(text, {embed: embed});
 	}

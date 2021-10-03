@@ -9,12 +9,17 @@ module.exports = class extends Command {
             aliases: ['user', 'whois'],
 			group: 'utility',
 			help: {
-				description: 'Check if today is your lucky day'
+				description: 'Check a user\'s info by id and tag. If no argument given, return yourself\'s info.',
+                arguments: ['[user_ID|user_tag]'],
+                explains: [
+					'Other user\'s ID and tag'
+				],
+				example: 'userinfo Natsuki#0492'
 			},
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 6000
+				time: 5000
 			}
 		})
 	}

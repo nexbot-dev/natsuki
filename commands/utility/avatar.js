@@ -12,7 +12,7 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 6000
+				time: 5000
 			}
 		})
 	}

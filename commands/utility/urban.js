@@ -1,7 +1,6 @@
 const { Command, Paginator } = require('aen-bot');
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
-const config = require('../../config');
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -16,13 +15,13 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 6000
+				time: 5000
 			}
 		})
 	}
 	
 	async run(msg, args) {
-		const url = new URL(config.api.urban);
+		const url = new URL(this.client.conf.api.urban);
 		let text = args.join(' ');
 
 		url.searchParams.set('term', text);
@@ -36,14 +35,14 @@ module.exports = class extends Command {
 			  	.then(m => m.delete({}, 4000));
 		}
 		else if (fetched.list.length === 1) {
-			return msg.channel.send(this.cmdCallback(fetched, curr, max));
+			return msg.channel.send(this.cmdCallback(fetched, 0, 1));
 		}
 		else {
 			return new Paginator(this.client, msg, fetched.list, this.cmdCallback).collectReaction(this.fixLength);
 		}
 	}
 
-	cmdCallback(data, index, max, ...funcCallback) {
+	cmdCallback(data, index, max, funcCallback) {
 		const text = data[index];
 		const fixLength = funcCallback[0];
 
@@ -63,8 +62,8 @@ module.exports = class extends Command {
 	fixLength(text, max_length) {
 		text = text.replace(/\[|\]/g, '__');
 
-		return text.length > max_length ?
-			`${text.slice(0, max_length-3)}...` :
-			text.length === 0 ? "None Provided": text;
+		return text.length > max_length
+			? `${text.slice(0, max_length-3)}...`
+			: text.length === 0 ? 'None Provided': text;
 	}
 }
