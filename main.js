@@ -4,7 +4,7 @@ const config = require('./config');
 require('dotenv').config();
 
 const client = new AenBot({
-	everyone: false,
+	disableMentions: 'everyone',
 	basedir: __dirname,
 	prefix: config.prefix,
 	config: config
@@ -14,8 +14,8 @@ client.registry
 .registerDefault()
 .registerCommands([
 	'animal',
-	'anime',
-	'dev'
+	'fun',
+	'weeb'
 ]);
 
 client.login(process.env.TOKEN);
