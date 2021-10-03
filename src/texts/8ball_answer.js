@@ -1,7 +1,5 @@
-let random = num => Math.round(Math.random() * num);
-
 /**
- * Fill the answer later with affirmative answer, netral answer, and negative answer
+ * Fill the answer later with affirmative answer, neutral answer, and negative answer
  */
 
 const Answer = {
@@ -11,7 +9,7 @@ const Answer = {
 	'WHEN': [''],
 	'WHY': [''],
 	'HOW': [''],
-	'HOW_MUCH': ['A lot', 'A little', ''],
+	'HOW_MUCH': ['A lot', 'A little', 'Within [random1] and [random2]L'],
 	'HOW_MANY': ['A lot', 'A few', ''],
 	'DEFAULT': ['It is certain', 'Yes, definitely', 'You may rely on it', 'My reply is no', 'Most likely']
 };

@@ -1,4 +1,4 @@
-const link = "https://cdn.discordapp.com/attachments/712562261667086376";
+const link = process.env.WEEB_URL;
 const temporary = {
     "cry1": "713464415445319700",
 	"cry2": "713464415705366538",
