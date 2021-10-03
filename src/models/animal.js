@@ -13,8 +13,9 @@ class Animal {
 		const endpoint = this.animal.toLowerCase().replace(/ +/g, '_');
 		const url = config.api.sra.animal + endpoint;
 
-		let fetched = await fetch(url, {method: 'GET'})
-			.then(res => res.json());
+		let fetched = await fetch(url, {
+			method: 'GET'
+		}).then(res => res.json());
 
 		return fetched;
 	}

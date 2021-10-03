@@ -19,14 +19,12 @@ module.exports = {
 			['discordbotlist', '']
 		],
 		version: {
-			nodejs: '',
-			discordjs: ''
+			nodejs: '16',
+			discordjs: '12'
 		}
 	},
 	api: {
-		aen: {
-			roast: 'https://aenma-api.glitch.me/text/roast'
-		},
+		icanhazdadjoke: 'https://icanhazdadjoke.com/',
 		sra: {
 			animal: 'https://some-random-api.ml/animal/',
 			lyric: 'https://some-random-api.ml/lyrics',

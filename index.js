@@ -6,5 +6,7 @@ module.exports = {
 	Weeb: require('./src/models/weeb'),
 
 	// src/texts
-	EightBallAnswer: require('./src/texts/8ball_answer')
+	EightBallAnswer: require('./src/texts/8ball_answer'),
+	Jokes: require('./src/texts/joke'),
+	Roasts: require('./src/texts/roast')
 }

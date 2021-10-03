@@ -10,21 +10,22 @@ class Weeb {
     }
 
     async getData() {
-        const url = config.api.weeb.request + `?type=${this.request}`;
+        const url = `${config.api.weeb.request}?type=${this.request.type}&nsfw=${this.request.nsfw}`;
 
-        let fetched = await fetch(url, {method: 'GET'})
-            .then(res => res.json());
+        let fetched = await fetch(url, {
+            method: 'GET'
+        }).then(res => res.json());
 
         return fetched;
     }
 
     async makeEmbed() {
         let data = await this.getData();
-        let path = data.path.replace(/\/i/i, '');
-        let imageURL = config.api.weeb.cdn + path;
+        let filename = data.path.replace(/\/i\//, '');
+        let imageURL = `${config.api.weeb.cdn}/${filename}`;
 
         let result = new MessageEmbed()
-            .setTitle(`${this.request}.gif`)
+            .setTitle(`${filename}`)
             .setColor(config.color)
             .setURL(imageURL)
             .setImage(imageURL)
