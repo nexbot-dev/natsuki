@@ -10,7 +10,12 @@ module.exports = class extends Command {
 			group: 'utility',
 			clientPermissions: ['EMBED_LINKS', 'MANAGE_MESSAGES'],
 			help: {
-				description: 'Check if today is your lucky day'
+				description: 'Check if today is your lucky day',
+				arguments: ['<word>'],
+                explains: [
+					'A word or sentence to search in UrbanDictionary.'
+				],
+				example: 'urban Cake'
 			},
 			cooldown: {
 				users: new Map(),

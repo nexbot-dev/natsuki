@@ -11,8 +11,11 @@ module.exports = class extends Command {
 			ownerOnly: true,
 			help: {
 				description: 'Unloads a command',
-				arguments: ['<command>'],
-				explains: ['The command name to be unloaded'],
+				arguments: ['<group>','<command>'],
+				explains: [
+					'The group where the command that to be unloaded is',
+					'The command name to be unloaded'
+				],
 				example: 'ping'
 			}
 		});
