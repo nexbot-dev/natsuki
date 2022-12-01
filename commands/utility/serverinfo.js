@@ -42,7 +42,6 @@ module.exports = class extends Command {
 
 		let embed = new MessageEmbed()
 			.setTitle('Server Info')
-			.setThumbnail(guild.icon)
 			.setColor(this.client.conf.color)
 			.setDescription(stripIndents`
 				**Name:** ${guild.name}
@@ -59,9 +58,16 @@ module.exports = class extends Command {
 				**Members:** ${guild.memberCount}
 				**Emojis:** ${guild.emojis.cache.size}
 			`)
-			.setImage(guild.icon)
 			.setTimestamp()
 			.setFooter(this.client.conf.version)
+
+		if (guild.icon) {
+			embed.setImage(guild.iconURL({
+				format: 'png',
+				dynamic: true,
+				size: 2048
+			}))
+		}
 
 		return msg.channel.send({embed: embed})
 	}

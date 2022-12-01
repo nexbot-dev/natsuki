@@ -25,7 +25,7 @@ module.exports = class extends Command {
 	async run(msg, args) {
 		let question = args.join(' ');
 
-		if (!question.match(/\?$/)) return msg.channel.send('Please use question mark (?) at the end.');
+		if (!question.endsWith('?')) return msg.channel.send('Please use question mark (?) at the end.');
 
 		let random = num => Math.floor(Math.random() * num);
 

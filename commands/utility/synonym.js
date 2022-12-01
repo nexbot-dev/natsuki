@@ -26,6 +26,8 @@ module.exports = class extends Command {
 	}
 	
 	async run(msg, args) {
+		if (!args.join('')) return msg.channel.send('Please enter the words to search.')
+
 		const url = new URL(this.client.conf.api.synonym);
 		let text = args.join('+');
 
