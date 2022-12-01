@@ -10,12 +10,16 @@ const client = new AenBot({
 	config: config
 });
 
-client.registry
-.registerDefault()
-.registerCommands([
-	'animal',
-	'fun',
-	'weeb'
-]);
+client.registry.register({
+	eventDirectory: 'events',
+	commandDirectory: 'commands',
+	commandGroup: [
+		'animal',
+		'fun',
+		'general',
+		'owner',
+		'weeb'
+	]
+});
 
 client.login(process.env.TOKEN);

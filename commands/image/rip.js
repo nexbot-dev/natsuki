@@ -1,6 +1,6 @@
 const { Command } = require('aen-bot');
 const { MessageAttachment } = require('discord.js');
-const Canvas = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -13,18 +13,18 @@ module.exports = class extends Command {
 			cooldown: {
 				users: new Map(),
 				usage: 2,
-				time: 6000
+				time: 5000
 			}
 		})
 	}
 	
 	async run(msg) {
-		let w = 250, h = 250;
+		let w = 512, h = 512;
 
-		let cvs = Canvas.createCanvas(w, h);
+		let cvs = createCanvas(w, h);
 		let pen = cvs.getContext('2d');
 
-		let img = await Canvas.loadImage(msg.author.displayAvatarURL({format: 'png', size: 1024}));
+		let img = await loadImage(msg.author.displayAvatarURL({format: 'png', size: 2048}));
 
 		pen.drawImage(img, 0, 0, w, h);
 		pen.drawImage(img, w/4, h/4, w/2, h/2);

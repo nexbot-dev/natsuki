@@ -1,5 +1,4 @@
 const { Command } = require('aen-bot');
-const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = class extends Command {

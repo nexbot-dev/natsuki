@@ -1,5 +1,4 @@
 const { Command } = require('aen-bot');
-const randomInt = require('../../src/utils/randomNumberGenerator');
 const { Roasts } = require('../../index');
 
 module.exports = class extends Command {
@@ -19,7 +18,7 @@ module.exports = class extends Command {
 	}
 
     async run(msg) {
-        const choice = randomInt(0, Roasts.length);
+        const choice = Math.floor(Math.random() * Roasts.length);
         const text = Roasts[choice];
 
         return msg.channel.send(text);
