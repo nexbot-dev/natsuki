@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "#commands/*": ["./src/commands/*"],
+      "#components/*": ["./src/components/*"],
+      "#core/*": ["./src/core/*"],
+      "#events/*": ["./src/events/*"],
+      "#libs/*": ["src/libs/*"],
+      "#services/*": ["src/services/*"],
+      "#root/*": ["./src/*"]
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "useUnknownInCatchVariables": true,
+    "skipLibCheck": true,
+  }
+}
