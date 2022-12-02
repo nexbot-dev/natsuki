@@ -1,5 +1,5 @@
 {
-	// Place your natsuki workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// Place your aenex workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
 	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
 	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
 	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
@@ -15,42 +15,35 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"New AenBot Command": {
-		"scope": "javascript",
-		"prefix": "newcmd",
+	"Create a command": {
+		"scope": "typescript",
+		"prefix": "nexcommand",
 		"body": [
-			"const { Command } = require('aen-bot');",
+			"import { NexClient } from '#core/NexClient';",
+			"import { NexCommand } from '#core/NexCommand';",
+			"import {",
+			"\tChatInputCommandInteraction,",
+			"\tSlashCommandBuilder,",
+			"} from 'discord.js';",
 			"",
-			"module.exports = class extends Command {",
-			"constructor(client) {",
-			"super(client, {",
-			"name: '$1',",
-			"aliases: [$2],",
-			"group: '$3',",
-			"ownerOnly: false,",
-			"guildOnly: false,",
-			"nsfw: false,",
-			"clientPermissions: [],",
-			"userPermissions: [],",
-			"help: {",
-			"description: '$5',",
-			"arguments: [],",
-			"explains: [],",
-			"example: ''",
-			"},",
-			"cooldown: {",
-			"users: new Map(),",
-			"usage: 2,",
-			"time: ${6:5000}",
-			"}",
-			"})",
-			"}",
+			"export class AenexCommand extends NexCommand {",
+			"\tdeclare public interaction: ChatInputCommandInteraction;",
 			"",
-			"async run(msg) {",
-			"$7",
+			"\tconstructor(client?: NexClient) {",
+			"\t\tsuper(client);",
+			"\t}",
+			"",
+			"\tbuildApplicationCommand() {",
+			"\t\treturn new SlashCommandBuilder()",
+			"\t\t\t.setName('$1')",
+			"\t\t\t.setDescription('$2')",
+			"\t\t\t$3",
+			"\t}",
+			"",
+			"\tasync executeApplicationCommand(interaction: ChatInputCommandInteraction) {",
+			"\t\t$4",
+			"\t}",
 			"}",
-			"}"
-		],
-		"description": "Define new command"
+		]
 	}
 }
