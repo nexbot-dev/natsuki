@@ -1,12 +1,12 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
+import { AnimalSubcommand } from '#components/SubCommand/animal';
+import { fetchAnimalData } from '#services/animal';
 import {
-	ChatInputCommandInteraction,
 	SlashCommandBuilder,
 	EmbedBuilder,
+	type ChatInputCommandInteraction,
 } from 'discord.js';
-import { AnimalChoice } from '#components/CommandOption/animal';
-import { fetchAnimalData } from '#services/animal';
 
 export class AenexCommand extends NexCommand {
 	constructor(client?: NexClient) {
@@ -14,29 +14,20 @@ export class AenexCommand extends NexCommand {
 	}
 
 	buildApplicationCommand() {
-		return new SlashCommandBuilder()
+		const slashCommand = new SlashCommandBuilder()
 			.setName('animal')
-			.setDescription('Sends animal image and facts')
-			.addSubcommand(subcommand => subcommand
-				.setName('bird')
-				.setDescription('Sends bird image or facts')
-				.addStringOption(AnimalChoice),
-			)
-			.addSubcommand(subcommand => subcommand
-				.setName('cat')
-				.setDescription('Sends cat image or facts')
-				.addStringOption(AnimalChoice),
-			)
-			.addSubcommand(subcommand => subcommand
-				.setName('dog')
-				.setDescription('Sends dog image or facts')
-				.addStringOption(AnimalChoice),
-			)
-			.addSubcommand(subcommand => subcommand
-				.setName('panda')
-				.setDescription('Sends panda image or facts')
-				.addStringOption(AnimalChoice),
-			);
+			.setDescription('Sends animal image and fact');
+
+		const animalNameData = [
+			'bird', 'cat', 'dog',
+			'fox', 'panda',
+		];
+
+		for (const animalName of animalNameData) {
+			slashCommand.addSubcommand(AnimalSubcommand(animalName));
+		}
+
+		return slashCommand;
 	}
 
 	async executeApplicationCommand(interaction: ChatInputCommandInteraction) {
@@ -49,16 +40,18 @@ export class AenexCommand extends NexCommand {
 		const embed = new EmbedBuilder()
 			.setTitle(`Image of ${animal}`)
 			.setColor(0xEE1280)
-			.setFooter({ text: 'Powered by Some-Random-API' });
+			.setFooter({ text: 'Powered by Some Random API' });
 
-		if (choice === 'facts') {
+		if (choice === 'image' || choice === undefined) {
+			embed.setImage(result.image);
+		}
+		if (choice === 'fact') {
 			embed.setDescription(result.fact);
 		}
-		else if (choice === 'both') {
-			embed.setDescription(result.fact).setImage(result.image);
-		}
-		else {
-			embed.setImage(result.image);
+		if (choice === 'both') {
+			embed
+				.setDescription(result.fact)
+				.setImage(result.image);
 		}
 
 		await interaction.editReply({ embeds: [embed] });
