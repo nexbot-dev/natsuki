@@ -8,7 +8,7 @@ import {
 	SlashCommandBuilder,
 } from 'discord.js';
 
-export class AenexCommand extends NexCommand {
+export class AppCommand extends NexCommand {
 	declare public interaction: ChatInputCommandInteraction;
 
 	constructor(client?: NexClient) {

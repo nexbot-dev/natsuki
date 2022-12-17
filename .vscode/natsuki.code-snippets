@@ -26,7 +26,7 @@
 			"\tSlashCommandBuilder,",
 			"} from 'discord.js';",
 			"",
-			"export class AenexCommand extends NexCommand {",
+			"export class AppCommand extends NexCommand {",
 			"\tdeclare public interaction: ChatInputCommandInteraction;",
 			"",
 			"\tconstructor(client?: NexClient) {",

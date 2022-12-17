@@ -45,8 +45,8 @@ export class Registry {
 
 	async #registerCommand(fileName: string, directoryPath: URL) {
 		const filePath = new URL(`./commands/${fileName}`, directoryPath).href;
-		const { AenexCommand } = await import(filePath);
-		const command: NexCommand = new AenexCommand(this.#client);
+		const { AppCommand } = await import(filePath);
+		const command: NexCommand = new AppCommand(this.#client);
 
 		if (command.buildApplicationCommand?.() === undefined) {
 			return;

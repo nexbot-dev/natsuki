@@ -8,7 +8,7 @@ import {
 	type ChatInputCommandInteraction,
 } from 'discord.js';
 
-export class AenexCommand extends NexCommand {
+export class AppCommand extends NexCommand {
 	constructor(client?: NexClient) {
 		super(client);
 	}
