@@ -31,7 +31,7 @@ export class AppCommand extends NexCommand {
 			slashCommand.addSubcommand(WeebSubcommand(weebType));
 		}
 
-		return slashCommand;
+		return slashCommand as SlashCommandBuilder;
 	}
 
 	async executeApplicationCommand(interaction: ChatInputCommandInteraction) {

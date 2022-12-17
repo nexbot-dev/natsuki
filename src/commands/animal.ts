@@ -27,7 +27,7 @@ export class AppCommand extends NexCommand {
 			slashCommand.addSubcommand(AnimalSubcommand(animalName));
 		}
 
-		return slashCommand;
+		return slashCommand as SlashCommandBuilder;
 	}
 
 	async executeApplicationCommand(interaction: ChatInputCommandInteraction) {
