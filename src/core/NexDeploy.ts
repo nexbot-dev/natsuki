@@ -23,8 +23,8 @@ export class NexDeploy {
 
 		for (const file of filteredFiles) {
 			const filePath = new URL(`./commands/${file}`, directoryPath).href;
-			const { AenexCommand } = await import(filePath);
-			const command: NexCommand = new AenexCommand();
+			const { AppCommand } = await import(filePath);
+			const command: NexCommand = new AppCommand();
 
 			if (command.buildApplicationCommand?.() === undefined) continue;
 
