@@ -1,12 +1,20 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
-import { fetchWeebData } from '#services/weeb';
+import { fetchData } from '#services/fetchData';
 import { WeebSubcommand } from '#components/SubCommand/weeb';
 import {
 	ChatInputCommandInteraction,
 	EmbedBuilder,
 	SlashCommandBuilder,
 } from 'discord.js';
+import config from '#root/config';
+
+interface ResultType {
+	path: string,
+	id: string,
+	type: string,
+	nsfw: string,
+}
 
 export class AppCommand extends NexCommand {
 	declare public interaction: ChatInputCommandInteraction;
@@ -38,15 +46,21 @@ export class AppCommand extends NexCommand {
 		await interaction.deferReply();
 
 		const weebType = interaction.options.getSubcommand();
-		const result = await fetchWeebData({
-			type: weebType,
-			isNsfw: false,
+		const result: ResultType = await fetchData({
+			url: config.api.weeb.request,
+			params: [
+				['type', weebType],
+				['nsfw', 'false'],
+			],
 		});
 
+		const filename = result.path.replace('/i/', '');
+		const url = new URL(filename, config.api.weeb.cdn);
+
 		const embed = new EmbedBuilder()
-			.setTitle(result.filename)
+			.setTitle(filename)
 			.setColor(0xEE1280)
-			.setImage(result.url.toString())
+			.setImage(url.toString())
 			.setFooter({ text: 'Powered by Ram Moe' });
 
 		await interaction.editReply({ embeds: [embed] });

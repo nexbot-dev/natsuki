@@ -1,12 +1,18 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
 import { AnimalSubcommand } from '#components/SubCommand/animal';
-import { fetchAnimalData } from '#services/animal';
+import { fetchData } from '#services/fetchData';
 import {
 	SlashCommandBuilder,
 	EmbedBuilder,
 	type ChatInputCommandInteraction,
 } from 'discord.js';
+import config from '#root/config';
+
+interface ResultType {
+	image: string,
+	fact: string,
+}
 
 export class AppCommand extends NexCommand {
 	constructor(client?: NexClient) {
@@ -35,7 +41,10 @@ export class AppCommand extends NexCommand {
 
 		const animal = interaction.options.getSubcommand();
 		const choice = interaction.options.getString('show');
-		const result = await fetchAnimalData(animal);
+
+		const result: ResultType = await fetchData({
+			url: new URL(animal, config.api.sra.animal),
+		});
 
 		const embed = new EmbedBuilder()
 			.setTitle(`Image of ${animal}`)
