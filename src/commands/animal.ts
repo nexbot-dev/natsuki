@@ -47,18 +47,22 @@ export class AppCommand extends NexCommand {
 		});
 
 		const embed = new EmbedBuilder()
-			.setTitle(`Image of ${animal}`)
 			.setColor(0xEE1280)
 			.setFooter({ text: 'Powered by Some Random API' });
 
-		if (choice === 'image' || choice === undefined) {
-			embed.setImage(result.image);
+		if (choice === 'image' || choice === null) {
+			embed
+				.setTitle(`Image of ${animal}`)
+				.setImage(result.image);
 		}
 		if (choice === 'fact') {
-			embed.setDescription(result.fact);
+			embed
+				.setTitle(`Fact of ${animal}`)
+				.setDescription(result.fact);
 		}
 		if (choice === 'both') {
 			embed
+				.setTitle(`Image and fact of ${animal}`)
 				.setDescription(result.fact)
 				.setImage(result.image);
 		}
