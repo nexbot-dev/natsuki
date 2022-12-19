@@ -5,32 +5,19 @@ interface fetchDataType {
 
 export async function fetchData({ url, params }: fetchDataType) {
 	const fetchUrl = new URL(url);
+	const searchParams = new URLSearchParams(params);
+	const headers = new Headers({
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		'User-Agent': 'Natsuki Bot (https://github.com/nexbot/natsuki)',
+	});
 
-	if (params !== undefined && params.length > 0) {
-		fetchUrl.search = assignParams(params);
-	}
+	fetchUrl.search = searchParams.toString();
 
 	const response = await fetch(fetchUrl, {
 		method: 'GET',
-		headers: {
-			'Accept': 'application/json',
-		},
+		headers: headers,
 	});
 
 	return response.json();
-}
-
-function assignParams(params: string[][]) {
-	const searchParams = new URLSearchParams();
-
-	if (params.length === 1) {
-		searchParams.set(params[0][0], params[0][1]);
-	}
-	else {
-		for (const [paramName, paramValue] of params) {
-			searchParams.set(paramName, paramValue);
-		}
-	}
-
-	return searchParams.toString();
 }
