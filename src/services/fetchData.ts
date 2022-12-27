@@ -9,7 +9,7 @@ export async function fetchData({ url, params }: fetchDataType) {
 	const headers = new Headers({
 		'Accept': 'application/json',
 		'Content-Type': 'application/json',
-		'User-Agent': 'Natsuki Bot (https://github.com/nexbot/natsuki)',
+		'User-Agent': 'Natsuki Bot (https://github.com/nexbot-dev/natsuki)',
 	});
 
 	fetchUrl.search = searchParams.toString();
