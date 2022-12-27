@@ -1,10 +1,10 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
-import { AnimalSubcommand } from '#components/SubCommand/animal';
 import { fetchData } from '#services/fetchData';
 import {
 	SlashCommandBuilder,
 	EmbedBuilder,
+	SlashCommandStringOption,
 	type ChatInputCommandInteraction,
 } from 'discord.js';
 import config from '#root/config';
@@ -13,6 +13,16 @@ interface ResultType {
 	image: string,
 	fact: string,
 }
+
+const AnimalChoices = (choices: SlashCommandStringOption) => choices
+	.setName('show')
+	.setDescription('What to show between image (default), fact, and both')
+	.setRequired(false)
+	.addChoices(
+		{ name: 'image', value: 'image' },
+		{ name: 'fact', value: 'fact' },
+		{ name: 'both', value: 'both' },
+	);
 
 export class AppCommand extends NexCommand {
 	constructor(client?: NexClient) {
@@ -30,7 +40,11 @@ export class AppCommand extends NexCommand {
 		];
 
 		for (const animalName of animalNameData) {
-			slashCommand.addSubcommand(AnimalSubcommand(animalName));
+			slashCommand.addSubcommand(subcommand => subcommand
+				.setName(animalName)
+				.setDescription(`Sends ${animalName} image or fact`)
+				.addStringOption(AnimalChoices),
+			);
 		}
 
 		return slashCommand as SlashCommandBuilder;

@@ -1,7 +1,6 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
 import { fetchData } from '#services/fetchData';
-import { WeebSubcommand } from '#components/SubCommand/weeb';
 import {
 	ChatInputCommandInteraction,
 	EmbedBuilder,
@@ -36,7 +35,10 @@ export class AppCommand extends NexCommand {
 		];
 
 		for (const weebType of weebTypeData) {
-			slashCommand.addSubcommand(WeebSubcommand(weebType));
+			slashCommand.addSubcommand(subcommand => subcommand
+				.setName(weebType)
+				.setDescription(`Sends ${weebType} animation from anime`),
+			);
 		}
 
 		return slashCommand as SlashCommandBuilder;
