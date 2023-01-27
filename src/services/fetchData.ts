@@ -1,6 +1,6 @@
 interface fetchDataType {
 	url: string | URL,
-	params?: string[][];
+	params?: [string, string][];
 }
 
 export async function fetchData({ url, params }: fetchDataType) {
