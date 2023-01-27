@@ -16,8 +16,6 @@ interface ResultType {
 }
 
 export class AppCommand extends NexCommand {
-	declare public interaction: ChatInputCommandInteraction;
-
 	constructor(client?: NexClient) {
 		super(client);
 	}
