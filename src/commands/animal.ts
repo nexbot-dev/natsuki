@@ -14,16 +14,6 @@ interface ResultType {
 	fact: string,
 }
 
-const AnimalChoices = (choices: SlashCommandStringOption) => choices
-	.setName('show')
-	.setDescription('What to show between image (default), fact, and both')
-	.setRequired(false)
-	.addChoices(
-		{ name: 'image', value: 'image' },
-		{ name: 'fact', value: 'fact' },
-		{ name: 'both', value: 'both' },
-	);
-
 export class AppCommand extends NexCommand {
 	constructor(client?: NexClient) {
 		super(client);
@@ -38,6 +28,16 @@ export class AppCommand extends NexCommand {
 			'bird', 'cat', 'dog',
 			'fox', 'panda',
 		];
+
+		const AnimalChoices = (choices: SlashCommandStringOption) => choices
+			.setName('show')
+			.setDescription('What to show between image (default), fact, and both')
+			.setRequired(false)
+			.addChoices(
+				{ name: 'image', value: 'image' },
+				{ name: 'fact', value: 'fact' },
+				{ name: 'both', value: 'both' },
+			);
 
 		for (const animalName of animalNameData) {
 			slashCommand.addSubcommand(subcommand => subcommand
