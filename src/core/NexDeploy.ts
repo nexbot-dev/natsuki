@@ -1,5 +1,5 @@
 import { REST, Routes, RESTPostAPIApplicationCommandsJSONBody } from 'discord.js';
-import readDirectory from '#libs/readDirectory';
+import { readDirectory } from '#libs/readDirectory';
 import { NexCommand } from '#core/NexCommand';
 import config from '#root/config';
 
