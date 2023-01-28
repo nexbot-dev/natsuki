@@ -81,6 +81,8 @@ export class AppCommand extends NexCommand {
 				.setImage(result.image);
 		}
 
-		await interaction.editReply({ embeds: [embed] });
+		await interaction.editReply({
+			embeds: [embed],
+		});
 	}
 }

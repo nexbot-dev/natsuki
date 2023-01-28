@@ -29,6 +29,8 @@ export class AppCommand extends NexCommand {
 			url: config.api.icanhazdadjoke,
 		});
 
-		await interaction.editReply(result.joke);
+		await interaction.editReply({
+			content: result.joke,
+		});
 	}
 }
