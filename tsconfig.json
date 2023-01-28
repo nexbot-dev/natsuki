@@ -8,9 +8,10 @@
       "#commands/*": ["./src/commands/*"],
       "#components/*": ["./src/components/*"],
       "#core/*": ["./src/core/*"],
+      "#data/*": ["./src/data/*"],
       "#events/*": ["./src/events/*"],
-      "#libs/*": ["src/libs/*"],
-      "#services/*": ["src/services/*"],
+      "#libs/*": ["./src/libs/*"],
+      "#services/*": ["./src/services/*"],
       "#root/*": ["./src/*"]
     },
     "outDir": "./dist",
