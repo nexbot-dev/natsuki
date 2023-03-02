@@ -1,6 +1,6 @@
 import { NexClient } from '#core/NexClient';
 import { NexCommand } from '#core/NexCommand';
-import { fetchData } from '#services/fetchData';
+import { fetchData } from '#libs/fetchData';
 import {
 	ChatInputCommandInteraction,
 	EmbedBuilder,

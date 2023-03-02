@@ -6,7 +6,7 @@ import {
 	SlashCommandBuilder,
 	italic,
 } from 'discord.js';
-import { fetchData } from '#services/fetchData';
+import { fetchData } from '#libs/fetchData';
 import config from '#root/config';
 import { stripIndents } from 'common-tags';
 
