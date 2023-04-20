@@ -3,6 +3,6 @@ import { NekoBestCommand } from '#components/Commands/nekosBest';
 
 export class AppCommand extends NekoBestCommand {
 	constructor(client?: NexClient) {
-		super('highfive', client);
+		super('highfive', '$user1 highfives $user2', client);
 	}
 }
