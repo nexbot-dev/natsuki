@@ -7,8 +7,8 @@
     "nexbot",
     "discord bot"
   ],
-  "author": "AenJojo",
-  "license": "GPL-3.0",
+  "author": "@nexbot-dev",
+  "license": "Apache-2.0",
   "main": "dist/app.js",
   "private": true,
   "type": "module",
